@@ -15,6 +15,7 @@ module tb;
     for(i = 0; i<20;i++) begin
       g.randomize();
       $display("Values of x, y and z are: %0d, %0d and %0d", g.x, g.y, g.z);
+      #20;
     end
    
   end
