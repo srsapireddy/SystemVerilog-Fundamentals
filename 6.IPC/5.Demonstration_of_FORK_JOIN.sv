@@ -8,12 +8,12 @@ module tb;
   
   task second();
     $display("Task 2 Started at %0t", $time);
-    #20;
+    #30;
     $display("Task 2 Completed at %0t", $time);
   endtask
   
-  task third();
-    $display("Reached nect to join at %0t", $time);
+  task third(); 
+    $display("Reached next to join at %0t", $time);
   endtask
   
   initial begin
