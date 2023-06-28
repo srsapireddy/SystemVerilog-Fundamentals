@@ -102,7 +102,7 @@ module tb;
       drv.run();
     join_none
     wait(done.triggered);
-    $finish;
+    $finish();
   end
   
   initial begin
