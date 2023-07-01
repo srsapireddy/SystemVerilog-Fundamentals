@@ -36,6 +36,7 @@ class monitor;
       trans.a = aif.a;
       trans.b = aif.b;
       trans.sum = aif.sum;
+      $display("-----------------------------------");
       $display("[MON]: DATA SENT TO SCOREBOARD");
       trans.display();
       mbx.put(trans);
@@ -52,11 +53,20 @@ class scoreboard;
     this.mbx = mbx;
   endfunction
   
+  task compare(input transaction trans);
+    if( (trans.sum) == (trans.a + trans.b))
+      $display("[SCO]: SUM RESULT MATCH");
+    else
+      $error("[SCO]: SUM RESULT MISMATCH"); // $warning, $fatal
+  endtask
+  
   task run();
     forever begin
       mbx.get(trans);
       $display("[SCO]: DATA RECEIVED FROM MONITOR");
       trans.display();
+      compare(trans);
+      $display("-----------------------------------");
       #40;
     end
   endtask
@@ -110,7 +120,6 @@ module tb;
  endmodule
  
  // design.sv
- 
  module add (
   input [3:0] a,b,
   output reg [4:0] sum,
@@ -119,7 +128,7 @@ module tb;
 
   always@(posedge clk)
     begin
-      sum <= a + b;
+      sum <= a - b;
     end
 
 endmodule
