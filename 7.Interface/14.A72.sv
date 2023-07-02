@@ -252,15 +252,4 @@ endmodule
     endmodule
 
 
- module add (
-  input [3:0] a,b,
-   output reg [7:0] mul,
-  input clk
-);
-
-  always@(posedge clk)
-    begin
-      mul <= a + b;
-    end
-
-endmodule
+ 
